@@ -1,0 +1,26 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/css/account/account.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">
+            <h1>欢迎</h1>
+            <form class="login-form" method="post" asp-controller="account" asp-action="LoginConfirm">
+                <input type="text" placeholder="用户名" name="username" />
+                <input type="password" placeholder="密码" name="password"/>
+                <button type="submit">login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
