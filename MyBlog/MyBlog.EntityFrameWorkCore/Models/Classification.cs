@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace MyBlog.EntityFrameWorkCore.Models
@@ -18,5 +18,12 @@ namespace MyBlog.EntityFrameWorkCore.Models
         public DateTime? ModificationDate { get; set; }
 
         public virtual ICollection<ClassifyBlog> ClassifyBlog { get; set; }
+
+        public Classification(string content)
+        {
+            Content = content;
+            IsDeleted = false;
+            CreationTime = DateTime.Now;
+        }
     }
 }

@@ -392,6 +392,7 @@
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Shared\Components\Menu\" />
     <Folder Include="Views\Blog\" />
+    <Folder Include="Views\Classification\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\lib\UEditor\net\net.sln" />
