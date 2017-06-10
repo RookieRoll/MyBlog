@@ -1,0 +1,51 @@
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles{
+    <link href="~/js/blog/create.css" rel="stylesheet" />
+
+}
+<section class="content-header">
+    <h1>
+        博文添加
+        <small> @ViewData["Title"]</small>
+    </h1>
+</section>
+<section class="content">
+    <form>
+        <div class="create-input-group">
+            <div class="input-group" id="title">
+                <span class="input-group-addon" id="basic-addon1">标题</span>
+                <input type="text" class="form-control" placeholder="标题" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group" id="classified">
+                <span class="input-group-addon" id="basic-addon1">分类</span>
+                <input type="text" class="form-control" placeholder="标题" aria-describedby="basic-addon1">
+            </div>
+        </div>
+        <div class="input-group create-body-content">
+            <span class="input-group-addon" id="basic-addon1">内容</span>
+            <textarea type="text" class="form-control container" aria-describedby="basic-addon1" id="container"></textarea>
+        </div>
+
+        <div class="button-group">
+            <button type="button" class="btn btn-info ">保存</button>
+            <button type="reset" class="btn btn-default reset">清空</button>
+        </div>
+    </form>
+</section>
+
+<script>
+    var width = document.getElementById("container").offsetWidth;
+    var ue = UE.getEditor('container', {
+        initialFrameWidth: width,
+        initialFrameHeight: 400,
+        zindex: 1,
+        initialContent: "请输入内容",
+        elementPathEnabled: false,
+        autoHeightEnabled: false
+    });
+</script>

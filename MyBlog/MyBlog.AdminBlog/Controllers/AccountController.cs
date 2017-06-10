@@ -30,6 +30,8 @@ namespace MyBlog.AdminBlog.Controllers
         public IActionResult LoginConfirm([FromForm]LoginViewModel login)
         {
             var user=_appService.Login(login.UserName, login.Password);
+            if (user == null)
+                return RedirectToAction("Login");
             return RedirectToAction("index", "Home");
         }
     }

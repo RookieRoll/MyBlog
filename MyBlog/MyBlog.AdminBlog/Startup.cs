@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MyBlog.EntityFrameWorkCore.Models;
 using MyBlog.AdminBlog.MiddleWare;
+using UEditorNetCore;
 
 namespace MyBlog.AdminBlog
 {
@@ -30,7 +31,7 @@ namespace MyBlog.AdminBlog
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddDbContext<MyBlogContext>();
+            services.AddUEditorService();
             services.AddDi();
             services.AddMvc();
         }
@@ -40,6 +41,8 @@ namespace MyBlog.AdminBlog
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+           
 
             if (env.IsDevelopment())
             {

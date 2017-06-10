@@ -35,10 +35,10 @@ namespace MyBlog.Application.AdminApplicationService
                             Email = users.Email,
                             Name = users.Name
                         }
-                       ).FirstOrDefault();
+                       ).AsParallel()
+                       .FirstOrDefault();
 
-
-            return user ?? throw new Exception("该用户不存在");
+            return user;
         }
 
 
