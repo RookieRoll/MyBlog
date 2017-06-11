@@ -30,7 +30,9 @@ namespace MyBlog.Core.Classifications
         public void Remove(int id)
         {
             var classify = _db.Classification.AsParallel().FirstOrDefault(m=>m.Id==id);
-            _db.Remove(classify);
+            classify.IsDeleted = true;
+            classify.DeletionTime = DateTime.Now;
+            classify.ModificationDate = DateTime.Now;
             _db.SaveChanges();
         }
 

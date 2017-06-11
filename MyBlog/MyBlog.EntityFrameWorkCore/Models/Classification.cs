@@ -19,11 +19,16 @@ namespace MyBlog.EntityFrameWorkCore.Models
 
         public virtual ICollection<ClassifyBlog> ClassifyBlog { get; set; }
 
-        public Classification(string content)
+
+        public static Classification Convert(string content)
         {
-            Content = content;
-            IsDeleted = false;
-            CreationTime = DateTime.Now;
+            return new Classification
+            {
+                Content = content,
+                IsDeleted = false,
+                ModificationDate = DateTime.Now,
+                CreationTime = DateTime.Now
+            };
         }
     }
 }

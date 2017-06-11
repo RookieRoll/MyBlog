@@ -1,6 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using MyBlog.Application.AdminApplicationService;
+using MyBlog.Application.ClassificationApplicationService;
 using MyBlog.Core;
+using MyBlog.Core.Classifications;
 using MyBlog.EntityFrameWorkCore.Models;
 using System;
 using System.Collections.Generic;
@@ -16,6 +18,9 @@ namespace MyBlog.AdminBlog.MiddleWare
             services.AddDbContext<MyBlogContext>();
             services.AddScoped<UserManager>();
             services.AddScoped<IAdminAppService, AdminAppService>();
+            services.AddScoped<ClassificationManager>();
+            services.AddScoped<IClassificationApplicationService, ClassificationAppLicationService>();
+
             //services.AddScoped<MenuProvider>();
         }
     }

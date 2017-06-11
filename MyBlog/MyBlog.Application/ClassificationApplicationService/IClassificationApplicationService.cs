@@ -10,5 +10,7 @@ namespace MyBlog.Application.ClassificationApplicationService
     {
         IQueryable<Classification> Get();
         void Create(string content);
+        void Remove(int id);
+        Classification Get(int id);
     }
 }
