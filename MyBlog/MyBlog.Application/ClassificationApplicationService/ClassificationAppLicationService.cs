@@ -22,6 +22,7 @@ namespace MyBlog.Application.ClassificationApplicationService
             _cManager = cManager;
             _db = db;
         }
+
         public IQueryable<Classification> Get()
         {
             return _cManager.Get().Where(m =>!m.IsDeleted);
@@ -58,6 +59,15 @@ namespace MyBlog.Application.ClassificationApplicationService
         {
             var data = Get(id);
             _cManager.Remove(id);
+        }
+
+        public void Update(int id,string content)
+        {
+            if (IsExited(content))
+                throw new UserFriendlyException("已存在");
+            var data = Get(id);
+            _cManager.Update(id, content);
+
         }
     }
 }

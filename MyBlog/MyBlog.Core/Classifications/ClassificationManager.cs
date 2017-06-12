@@ -36,5 +36,11 @@ namespace MyBlog.Core.Classifications
             _db.SaveChanges();
         }
 
+        public void Update(int id,string content)
+        {
+            var classify = _db.Classification.AsParallel().FirstOrDefault(m => m.Id == id);
+            classify.Content = content;
+            _db.SaveChanges();
+        }
     }
 }

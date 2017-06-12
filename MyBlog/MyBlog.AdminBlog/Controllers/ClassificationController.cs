@@ -20,7 +20,7 @@ namespace MyBlog.AdminBlog.Controllers
         {
             var result = _classifyService.Get()
                 .Select(m => ClassificationViewModel
-                .Convert(m.Id,m.Content,m.CreationTime,m.ModificationDate));
+                .Convert(m.Id, m.Content, m.CreationTime, m.ModificationDate));
             return View(result);
         }
 
@@ -35,14 +35,27 @@ namespace MyBlog.AdminBlog.Controllers
         public IActionResult Delete(int id)
         {
             var data = _classifyService.Get(id);
-            var result = DeleteViewModel.Convert(data.Id,data.Content);
-            return View("_Delete",result);
+            var result = DeleteViewModel.Convert(data.Id, data.Content);
+            return View("_Delete", result);
         }
-
+        [HttpPost]
         public IActionResult DeleteComfirm(int id)
         {
             _classifyService.Remove(id);
             return View("_SuccessInfo");
+        }
+        [HttpPost]
+        public IActionResult Update(int id)
+        {
+            var data = _classifyService.Get(id);
+            var result = UpdateViewModel.Convert(data.Id, data.Content);
+            return View("_Update", result);
+        }
+        [HttpPost]
+        public IActionResult UpdateConfirm(UpdateViewModel update)
+        {
+            _classifyService.Update(update.Id, update.Content);
+            return RedirectToAction("index");
         }
     }
 }

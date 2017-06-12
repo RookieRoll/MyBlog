@@ -14,10 +14,10 @@ namespace MyBlog.AdminBlog.Navigation
             SideMenu = new MenuItem();
       
             //创建用户相关的权限
-            MenuItem item = new MenuItem { Name = "用户", Url = "/User/Index"};
+            MenuItem item = new MenuItem { Name = "用户", Url = "/Blog/Create"};
             SideMenu.Children.Add(item);
             //创建权限相关的菜单
-            item = new MenuItem { Name = "角色", Url = "/Role/Index"};
+            item = new MenuItem { Name = "分类", Url = "/Classification/Index" };
             SideMenu.Children.Add(item);
             //创建组织相关的菜单
             item = new MenuItem { Name = "博客"};

@@ -12,5 +12,6 @@ namespace MyBlog.Application.ClassificationApplicationService
         void Create(string content);
         void Remove(int id);
         Classification Get(int id);
+        void Update(int id, string content);
     }
 }

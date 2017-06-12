@@ -7,6 +7,8 @@
     <link href="~/js/blog/create.css" rel="stylesheet" />
 
 }
+
+@model IEnumerable<MyBlog.AdminBlog.ViewModel.Blogs.ClassifyContent>
 <section class="content-header">
     <h1>
         博文添加
@@ -23,7 +25,13 @@
 
             <div class="input-group" id="classified">
                 <span class="input-group-addon" id="basic-addon1">分类</span>
-                <input type="text" class="form-control" placeholder="标题" aria-describedby="basic-addon1">
+                <select type="t" class="form-control" aria-describedby="basic-addon1">
+                   @foreach (var item in Model)
+                   {
+                       <option value="@item.Id">@item.Content</option>
+                   }
+                </select>
+
             </div>
         </div>
         <div class="input-group create-body-content">
@@ -44,7 +52,6 @@
         initialFrameWidth: width,
         initialFrameHeight: 400,
         zindex: 1,
-        initialContent: "请输入内容",
         elementPathEnabled: false,
         autoHeightEnabled: false
     });
