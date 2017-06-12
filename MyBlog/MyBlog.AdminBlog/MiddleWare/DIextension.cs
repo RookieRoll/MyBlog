@@ -4,10 +4,6 @@ using MyBlog.Application.ClassificationApplicationService;
 using MyBlog.Core;
 using MyBlog.Core.Classifications;
 using MyBlog.EntityFrameWorkCore.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyBlog.AdminBlog.MiddleWare
 {
@@ -20,8 +16,7 @@ namespace MyBlog.AdminBlog.MiddleWare
             services.AddScoped<IAdminAppService, AdminAppService>();
             services.AddScoped<ClassificationManager>();
             services.AddScoped<IClassificationApplicationService, ClassificationAppLicationService>();
-
-            //services.AddScoped<MenuProvider>();
+            
         }
     }
 }

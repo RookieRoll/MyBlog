@@ -9,7 +9,6 @@ namespace MyBlog.EntityFrameWorkCore.Models
         public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Blog> Blog { get; set; }
         public virtual DbSet<Classification> Classification { get; set; }
-        public virtual DbSet<ClassifyBlog> ClassifyBlog { get; set; }
         public virtual DbSet<Comment> Comment { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<User> User { get; set; }
@@ -27,7 +26,6 @@ namespace MyBlog.EntityFrameWorkCore.Models
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Admin)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("FK_ADMIN_REFERENCE_USER");
             });
 
@@ -43,50 +41,34 @@ namespace MyBlog.EntityFrameWorkCore.Models
 
                 entity.Property(e => e.DeletionTime).HasColumnType("datetime");
 
-                entity.Property(e => e.ModificationDate).HasColumnType("datetime");
+                entity.Property(e => e.ModificationTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Title)
-                    .IsRequired()
-                    .HasMaxLength(255);
+                entity.Property(e => e.Title).IsRequired();
 
                 entity.HasOne(d => d.Author)
                     .WithMany(p => p.Blog)
                     .HasForeignKey(d => d.AuthorId)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("FK_BLOG_REFERENCE_ADMIN");
+
+                entity.HasOne(d => d.Classify)
+                    .WithMany(p => p.Blog)
+                    .HasForeignKey(d => d.ClassifyId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK_BLOG_REFERENCE_CLASSIFI");
             });
 
             modelBuilder.Entity<Classification>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
-                entity.Property(e => e.Content)
-                    .IsRequired()
-                    .HasMaxLength(255);
+                entity.Property(e => e.Content).IsRequired();
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
                 entity.Property(e => e.DeletionTime).HasColumnType("datetime");
 
-                entity.Property(e => e.ModificationDate).HasColumnType("datetime");
-            });
-
-            modelBuilder.Entity<ClassifyBlog>(entity =>
-            {
-                entity.HasKey(e => new { e.BlogId, e.ClassifyId })
-                    .HasName("PK_CLASSIFYBLOG");
-
-                entity.HasOne(d => d.Blog)
-                    .WithMany(p => p.ClassifyBlog)
-                    .HasForeignKey(d => d.BlogId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("FK_CLASSIFY_REFERENCE_BLOG");
-
-                entity.HasOne(d => d.Classify)
-                    .WithMany(p => p.ClassifyBlog)
-                    .HasForeignKey(d => d.ClassifyId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("FK_CLASSIFY_REFERENCE_CLASSIFI");
+                entity.Property(e => e.ModificationTime).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<Comment>(entity =>
@@ -99,9 +81,9 @@ namespace MyBlog.EntityFrameWorkCore.Models
 
                 entity.Property(e => e.Content).IsRequired();
 
-                entity.Property(e => e.DeletionTime).HasColumnType("datetime");
+                entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
-                entity.Property(e => e.PublishTime).HasColumnType("datetime");
+                entity.Property(e => e.DeletionTime).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Author)
                     .WithMany(p => p.Comment)
@@ -118,10 +100,11 @@ namespace MyBlog.EntityFrameWorkCore.Models
 
             modelBuilder.Entity<Customer>(entity =>
             {
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Customer)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("FK_CUSTOMER_REFERENCE_USER");
             });
 
@@ -131,13 +114,13 @@ namespace MyBlog.EntityFrameWorkCore.Models
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Email).HasMaxLength(32);
+                entity.Property(e => e.Email).HasMaxLength(68);
 
                 entity.Property(e => e.Name).HasMaxLength(32);
 
                 entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasMaxLength(64);
+                    .HasMaxLength(128);
 
                 entity.Property(e => e.UserName)
                     .IsRequired()

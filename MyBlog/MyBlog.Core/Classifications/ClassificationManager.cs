@@ -32,7 +32,7 @@ namespace MyBlog.Core.Classifications
             var classify = _db.Classification.AsParallel().FirstOrDefault(m=>m.Id==id);
             classify.IsDeleted = true;
             classify.DeletionTime = DateTime.Now;
-            classify.ModificationDate = DateTime.Now;
+            classify.ModificationTime = DateTime.Now;
             _db.SaveChanges();
         }
 

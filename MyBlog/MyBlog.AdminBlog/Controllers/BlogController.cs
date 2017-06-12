@@ -28,11 +28,13 @@ namespace MyBlog.AdminBlog.Controllers
         {
             var classify = _classService.Get()
                 .Select(m => ClassifyContent.Convert(m.Id, m.Content));
-            return View(classify);
+            return View("_Create",classify);
         }
 
-        public IActionResult CreateConfirm()
+        [HttpPost]
+        public IActionResult CreateConfirm(CreateViewModel model)
         {
+
             return View();
         }
 

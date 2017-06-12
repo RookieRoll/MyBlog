@@ -25,7 +25,7 @@ namespace MyBlog.Application.ClassificationApplicationService
 
         public IQueryable<Classification> Get()
         {
-            return _cManager.Get().Where(m =>!m.IsDeleted);
+            return _cManager.Get().Where(m => !m.IsDeleted);
         }
 
         public Classification Get(int id)
@@ -33,9 +33,9 @@ namespace MyBlog.Application.ClassificationApplicationService
             var data = Get();
             var classify = data
                 .AsParallel()
-                .FirstOrDefault(m=>m.Id==id);
-        
-            return classify?? throw new UserFriendlyException("该分类不存在", HttpStatusCode.BadRequest);
+                .FirstOrDefault(m => m.Id == id);
+
+            return classify ?? throw new UserFriendlyException("该分类不存在", HttpStatusCode.BadRequest);
         }
         public void Create(string content)
         {
@@ -61,7 +61,7 @@ namespace MyBlog.Application.ClassificationApplicationService
             _cManager.Remove(id);
         }
 
-        public void Update(int id,string content)
+        public void Update(int id, string content)
         {
             if (IsExited(content))
                 throw new UserFriendlyException("已存在");

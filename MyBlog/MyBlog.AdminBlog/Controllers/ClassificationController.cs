@@ -20,7 +20,7 @@ namespace MyBlog.AdminBlog.Controllers
         {
             var result = _classifyService.Get()
                 .Select(m => ClassificationViewModel
-                .Convert(m.Id, m.Content, m.CreationTime, m.ModificationDate));
+                .Convert(m.Id, m.Content, m.CreationTime, m.ModificationTime));
             return View(result);
         }
 

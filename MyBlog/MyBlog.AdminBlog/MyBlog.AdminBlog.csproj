@@ -10,8 +10,8 @@
 
   <ItemGroup>
     <Content Include="wwwroot\css\account\account.css" />
+    <Content Include="wwwroot\css\blog\create.css" />
     <Content Include="wwwroot\js\account\account.js" />
-    <Content Include="wwwroot\js\blog\create.css" />
     <Content Include="wwwroot\lib\AdminLte\css\AdminLTE.css" />
     <Content Include="wwwroot\lib\AdminLte\css\AdminLTE.min.css" />
     <Content Include="wwwroot\lib\AdminLte\css\alt\AdminLTE-bootstrap-social.css" />
@@ -392,7 +392,6 @@
     <Folder Include="ViewComponents\HeaderViewComponets\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Shared\Components\Menu\" />
-    <Folder Include="Views\Blog\" />
     <Folder Include="Views\Classification\" />
   </ItemGroup>
   <ItemGroup>

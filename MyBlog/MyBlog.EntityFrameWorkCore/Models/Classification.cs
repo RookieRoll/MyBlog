@@ -7,7 +7,7 @@ namespace MyBlog.EntityFrameWorkCore.Models
     {
         public Classification()
         {
-            ClassifyBlog = new HashSet<ClassifyBlog>();
+            Blog = new HashSet<Blog>();
         }
 
         public int Id { get; set; }
@@ -15,19 +15,19 @@ namespace MyBlog.EntityFrameWorkCore.Models
         public bool IsDeleted { get; set; }
         public DateTime CreationTime { get; set; }
         public DateTime? DeletionTime { get; set; }
-        public DateTime? ModificationDate { get; set; }
+        public DateTime? ModificationTime { get; set; }
 
-        public virtual ICollection<ClassifyBlog> ClassifyBlog { get; set; }
-
+        public virtual ICollection<Blog> Blog { get; set; }
 
         public static Classification Convert(string content)
         {
             return new Classification
             {
-                Content = content,
-                IsDeleted = false,
-                ModificationDate = DateTime.Now,
-                CreationTime = DateTime.Now
+                IsDeleted=false,
+                CreationTime=DateTime.Now,
+                ModificationTime=DateTime.Now,
+                Content=content
+
             };
         }
     }

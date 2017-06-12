@@ -10,7 +10,7 @@ namespace MyBlog.EntityFrameWorkCore.Models
             Blog = new HashSet<Blog>();
         }
 
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public int Id { get; set; }
 
         public virtual ICollection<Blog> Blog { get; set; }
