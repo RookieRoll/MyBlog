@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace MyBlog.EntityFrameWorkCore.Models
@@ -20,5 +20,21 @@ namespace MyBlog.EntityFrameWorkCore.Models
         public virtual Comment Comment { get; set; }
         public virtual Admin Author { get; set; }
         public virtual Classification Classify { get; set; }
+
+        public static Blog Convert(int classifid,string content,string title,int authorId,string authorName,int state)
+        {
+            return new Blog
+            {
+                ClassifyId = classifid,
+                Title = title,
+                Content = content,
+                AuthorId = authorId,
+                AuthorName = authorName,
+                IsDeleted = false,
+                CreationTime = DateTime.Now,
+                ModificationTime = DateTime.Now,
+                State = state
+            };
+        }
     }
 }

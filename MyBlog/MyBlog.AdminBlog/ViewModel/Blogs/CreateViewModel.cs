@@ -8,7 +8,7 @@ namespace MyBlog.AdminBlog.ViewModel.Blogs
     public class CreateViewModel
     {
         public int ClassifId { get; set; }
-        public string Titile { get; set; }
+        public string Title { get; set; }
         public string Content { get; set; }
     }
 }

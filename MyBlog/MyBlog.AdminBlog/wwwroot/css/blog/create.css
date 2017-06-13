@@ -14,17 +14,13 @@
 }
 
 .button-group {
-    position: absolute;
-    bottom: 55px;
     display: flex;
-    justify-content: space-between;
-}
-.button-group{
-    margin-left:55px;
+    justify-content: flex-start;
+    margin-top: 16px;
 }
 .create-body-content{
     margin-top:20px
 }
-.reset{
-   margin-left:20px;
+.clear{
+    margin-left: 20px;
 }

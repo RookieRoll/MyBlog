@@ -21,8 +21,8 @@ namespace MyBlog.AdminBlog.ViewModel.Classifications
             {
                 Id = id,
                 Content = content,
-                CreateTime = createTime.ToString("yyyy-MM-dd HH-mm"),
-                ModificationTime = modificatime.ToString("yyyy-MM-dd HH-mm")
+                CreateTime = createTime.ToString("yyyy-MM-dd HH:mm"),
+                ModificationTime = modificatime.ToString("yyyy-MM-dd HH:mm")
             };
         }
     }

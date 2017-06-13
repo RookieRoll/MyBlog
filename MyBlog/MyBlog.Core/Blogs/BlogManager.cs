@@ -15,17 +15,19 @@ namespace MyBlog.Core.Blogs
             _db = db;
         }
 
-        public Blog Create(Blog blog)
+        public void Create(Blog blog)
         {
             _db.Blog.Add(blog);
-            return blog;
+            _db.SaveChanges();
         }
 
-        public void Update(int id, string content, int title)
+        public void Update(int id, string content, string title,int classifiId)
         {
             var blog = _db.Blog.AsParallel().FirstOrDefault(m => m.Id == id);
-
+            blog.Title = title;
+            blog.Content = content;
             blog.ModificationTime = DateTime.Now;
+            blog.ClassifyId = classifiId;
             _db.SaveChanges();
         }
         public IQueryable<Blog> Get()
