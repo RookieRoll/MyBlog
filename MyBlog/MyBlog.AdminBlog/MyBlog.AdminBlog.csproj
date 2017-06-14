@@ -6,12 +6,17 @@
 
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
     <Content Include="wwwroot\css\account\account.css" />
     <Content Include="wwwroot\css\blog\create.css" />
+    <Content Include="wwwroot\css\blog\Update.css" />
     <Content Include="wwwroot\js\account\account.js" />
+    <Content Include="wwwroot\js\blog\index.js" />
+    <Content Include="wwwroot\js\blog\update.js" />
+    <Content Include="wwwroot\js\index.js" />
     <Content Include="wwwroot\lib\AdminLte\css\AdminLTE.css" />
     <Content Include="wwwroot\lib\AdminLte\css\AdminLTE.min.css" />
     <Content Include="wwwroot\lib\AdminLte\css\alt\AdminLTE-bootstrap-social.css" />
@@ -389,6 +394,8 @@
     <ProjectReference Include="..\MyBlog.Application\MyBlog.Application.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Api\Controllers\" />
+    <Folder Include="Areas\Api\Dtos\" />
     <Folder Include="ViewComponents\HeaderViewComponets\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Shared\Components\Menu\" />

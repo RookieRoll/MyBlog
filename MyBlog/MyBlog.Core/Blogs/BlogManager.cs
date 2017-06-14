@@ -43,5 +43,13 @@ namespace MyBlog.Core.Blogs
             blog.ModificationTime = DateTime.Now;
             _db.SaveChanges();
         }
+
+        public void SetBlogState(int id,BlogStates state)
+        {
+            var blog = Get().FirstOrDefault(m=>m.Id==id);
+            blog.State = (int)state;
+            blog.ModificationTime = DateTime.Now;
+            _db.SaveChanges();
+        }
     }
 }

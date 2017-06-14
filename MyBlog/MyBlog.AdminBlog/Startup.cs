@@ -26,6 +26,7 @@ namespace MyBlog.AdminBlog
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddCors();
             services.AddUEditorService();
             services.AddDi();
             services.AddMvc();
@@ -37,7 +38,12 @@ namespace MyBlog.AdminBlog
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-           
+
+            app.UseCors(build => build
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowAnyOrigin()
+            .AllowCredentials());
 
             if (env.IsDevelopment())
             {
@@ -53,6 +59,12 @@ namespace MyBlog.AdminBlog
 
             app.UseMvc(routes =>
             {
+                routes.MapAreaRoute(
+                    name: "area",
+                    areaName: "api",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

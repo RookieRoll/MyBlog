@@ -1,3 +1,4 @@
+using MyBlog.Core;
 using MyBlog.EntityFrameWorkCore.Models;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,7 @@ namespace MyBlog.Application.BlogsApplicationService
         void Create(int classifyId, string title, string content, int authorId, string authorName);
         Blog Get(int id);
         void Remove(int id);
+        void Update(int id, string title, string content, int classifyId);
+        void SetBlogState(int id, BlogStates state);
     }
 }

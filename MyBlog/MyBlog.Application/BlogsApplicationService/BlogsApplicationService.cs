@@ -23,16 +23,21 @@ namespace MyBlog.Application.BlogsApplicationService
 
         public IQueryable<Blog> Get()
         {
-            return _blogManager.Get().Where(m => !m.IsDeleted);
+            Func<Blog, bool> func = m => !m.IsDeleted;
+            return Get(func);
         }
 
         public IQueryable<Blog> Get(Func<Blog,bool> func)
         {
-            return Get().Where(func).AsParallel().AsQueryable();
+            return _blogManager.Get().Where(func).AsParallel().AsQueryable();
         }
         public void Create(int classifyId,string title,string content,int authorId,string authorName)
         {
             _blogManager.Create(Blog.Convert(classifyId,content,title,authorId,authorName,(int)BlogStates.Unpublish));
+        }
+        public void Update(int id,string title,string content,int classifyId)
+        {
+            _blogManager.Update(id,content,title,classifyId);
         }
         public Blog Get(int id)
         {
@@ -41,6 +46,11 @@ namespace MyBlog.Application.BlogsApplicationService
 
         }
 
+        public void SetBlogState(int id,BlogStates state)
+        {
+            var result = Get(id);
+            _blogManager.SetBlogState(result.Id,state);
+        }
         public void Remove(int id)
         {
             var date = Get(id);

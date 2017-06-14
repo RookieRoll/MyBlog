@@ -32,15 +32,52 @@
                     <td>@item.CreateTime</td>
                     <td>@item.ModificationTime</td>
                     <td>
-                        <a><i class="glyphicon glyphicon-globe" title="发布"></i></a>
-                        <i>|</i>
-                        <a href="/Blog/Update/@item.Id"><i class="glyphicon glyphicon-edit" title="编辑"></i></a>
-                        <i>|</i>
-                        <a><i class="glyphicon glyphicon-trash" title="删除"></i></a>
+                        <form>
+                            <a href="javaScript:void(0)" onclick="Publish(@item.Id)"><i class="glyphicon glyphicon-globe" title="发布"></i></a>
+                            <i>|</i>
+                            <a href="/Blog/Update/@item.Id"><i class="glyphicon glyphicon-edit" title="编辑"></i></a>
+                            <i>|</i>
+                            <a href="javaScript:void(0)" onclick="BlogDelete(@item.Id)"><i class="glyphicon glyphicon-trash" title="删除" ></i></a>
+                        </form>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </section>
+<div id="showModel">
 
+</div>
+<script>
+    function Publish(id) {
+        $.ajax({
+            url: "/Blog/Publish",
+            method: "post",
+            data: {
+                id:id
+            },
+            success: function (data) {
+                alert(data);
+                location.reload();
+            }
+
+        })
+
+    }
+
+
+    function BlogDelete(id) {
+        $.ajax({
+            url: "/Blog/Delete",
+            method: 'post',
+            data: {
+
+                Id: id
+            },
+            success: function (data) {
+                $("#showModel").html(data)
+            }
+
+        })
+    }
+</script>

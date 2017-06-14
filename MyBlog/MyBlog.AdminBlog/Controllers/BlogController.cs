@@ -30,7 +30,9 @@ namespace MyBlog.AdminBlog.Controllers
         #region 未发表
         public IActionResult UnPublish()
         {
-            Func<Blog, bool> func = state => state.State == (int)BlogStates.Unpublish;
+            Func<Blog, bool> func = state => 
+            state.State == (int)BlogStates.Unpublish
+            &&!state.IsDeleted;
 
             var result = _blogService.Get(func)
                 .Select(m => BlogViewModel
@@ -46,8 +48,52 @@ namespace MyBlog.AdminBlog.Controllers
             result.ClassifyList = classifyList.Select(m=> ClassifyContent.Convert(m.Id,m.Content));
             return View("_Update",result);
         }
+
+        public IActionResult UpdateConfirm(EditViewModel model)
+        {
+            _blogService.Update(model.Id,model.Title,model.Content,model.ClassifyId);
+            return Json("ok");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var data = _blogService.Get(id);
+            var result = DeleteViewModel.Convert(data.Id, data.Title);
+            return View("_Delete",result);
+        }
+
+        public IActionResult DeleteConfirm(int id)
+        {
+            _blogService.Remove(id);
+            return Json("_SuccessInfo");
+        }
+
+        [HttpPost]
+        public IActionResult Publish(int id)
+        {
+            _blogService.SetBlogState(id, BlogStates.Publish);
+            return Json("发布成功");
+        }
         #endregion
 
+        #region 已发表
+        public IActionResult Publish()
+        {
+            Func<Blog, bool> func = m => m.State == (int)BlogStates.Publish && !m.IsDeleted;
+            var result = _blogService.Get(func)
+                .Select(m => BlogViewModel
+                .Convert(m.Id, m.Title, m.CreationTime, m.ModificationTime));
+            return View(result);
+        }
+
+        [HttpPost]
+        public IActionResult UnPublish(int id)
+        {
+            _blogService.SetBlogState(id, BlogStates.Unpublish);
+            return Json("撤消成功");
+        }
+#endregion
         public IActionResult Create()
         {
             var classify = _classService.Get()

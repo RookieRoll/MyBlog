@@ -22,7 +22,7 @@ namespace MyBlog.AdminBlog.Navigation
             //创建组织相关的菜单
             item = new MenuItem { Name = "博客"};
             item.Children.Add(new MenuItem { Name="未发表博文",Url="/Blog/UnPublish"});
-            item.Children.Add(new MenuItem { Name = "已发表博文" });
+            item.Children.Add(new MenuItem { Name = "已发表博文" ,Url="/Blog/Publish"});
             SideMenu.Children.Add(item);
         }
     }
