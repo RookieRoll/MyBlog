@@ -10,5 +10,6 @@ namespace MyBlog.AdminBlog.ViewModel.Blogs
         public int ClassifId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
+        public string SubContent { get; set; }
     }
 }

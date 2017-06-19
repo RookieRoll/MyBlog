@@ -13,6 +13,7 @@ namespace MyBlog.AdminBlog.ViewModel.Blogs
 
         public int ClassifyId { get; set; }
 
+        public string SubContent { get; set; }
         public IEnumerable<ClassifyContent> ClassifyList { get; set; }
 
         public static EditViewModel Convert(int id,string title,string content,int classified)

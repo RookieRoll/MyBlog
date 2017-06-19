@@ -9,6 +9,8 @@ namespace MyBlog.EntityFrameWorkCore.Models
         public string AuthorName { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
+
+        public string SubContent { get; set; }
         public DateTime CreationTime { get; set; }
         public DateTime ModificationTime { get; set; }
         public DateTime? DeletionTime { get; set; }
@@ -21,10 +23,11 @@ namespace MyBlog.EntityFrameWorkCore.Models
         public virtual Admin Author { get; set; }
         public virtual Classification Classify { get; set; }
 
-        public static Blog Convert(int classifid,string content,string title,int authorId,string authorName,int state)
+        public static Blog Convert(int classifid,string content,string title,int authorId,string authorName,int state,string subcontent)
         {
             return new Blog
             {
+                SubContent=subcontent,
                 ClassifyId = classifid,
                 Title = title,
                 Content = content,

@@ -1,8 +1,0 @@
-version: '2'
-
-services:
-  myblog.adminblog:
-    image: myblog.adminblog
-    build:
-      context: ./MyBlog.AdminBlog
-      dockerfile: Dockerfile

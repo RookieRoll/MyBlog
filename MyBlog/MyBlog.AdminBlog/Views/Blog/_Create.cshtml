@@ -154,14 +154,15 @@
         var content = ue.getContent();
         var classify = $("#classify").val();
         var title = $("#title").val();
-        console.log(classify);
+        var subcontent = ue.getContentTxt();
         $.ajax({
             url: "/Blog/CreateConfirm",
             method: 'post',
             data: {
                 classifId: classify,
                 content: content,
-                Title: title
+                Title: title,
+                SubContent: subcontent
             },
             success: function () {
                 location.href="/Blog/UnPublish"

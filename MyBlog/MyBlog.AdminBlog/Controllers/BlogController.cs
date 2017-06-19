@@ -51,7 +51,8 @@ namespace MyBlog.AdminBlog.Controllers
 
         public IActionResult UpdateConfirm(EditViewModel model)
         {
-            _blogService.Update(model.Id,model.Title,model.Content,model.ClassifyId);
+            var subcontent = model.SubContent.Length > 1000 ? model.SubContent.Substring(0, 1000) : model.SubContent;
+            _blogService.Update(model.Id,model.Title,model.Content,model.ClassifyId, subcontent);
             return Json("ok");
         }
 
@@ -104,7 +105,8 @@ namespace MyBlog.AdminBlog.Controllers
         [HttpPost]
         public IActionResult CreateConfirm(CreateViewModel model)
         {
-            _blogService.Create(model.ClassifId, model.Title, model.Content, 1, "Kobold");
+            var subcontent = model.SubContent.Length > 1000?model.SubContent.Substring(0,1000):model.SubContent;
+            _blogService.Create(model.ClassifId, model.Title, model.Content, 1, "Kobold",subcontent);
             return RedirectToAction("UnPublish");
         }
 

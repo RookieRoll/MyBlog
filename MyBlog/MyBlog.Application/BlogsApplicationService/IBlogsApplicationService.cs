@@ -11,10 +11,10 @@ namespace MyBlog.Application.BlogsApplicationService
     {
         IQueryable<Blog> Get();
         IQueryable<Blog> Get(Func<Blog, bool> func);
-        void Create(int classifyId, string title, string content, int authorId, string authorName);
+        void Create(int classifyId, string title, string content, int authorId, string authorName,string subcontent);
         Blog Get(int id);
         void Remove(int id);
-        void Update(int id, string title, string content, int classifyId);
+        void Update(int id, string title, string content, int classifyId,string subContent);
         void SetBlogState(int id, BlogStates state);
     }
 }

@@ -37,6 +37,8 @@ namespace MyBlog.EntityFrameWorkCore.Models
 
                 entity.Property(e => e.Content).IsRequired();
 
+                entity.Property(e => e.SubContent).IsRequired();
+
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
                 entity.Property(e => e.DeletionTime).HasColumnType("datetime");

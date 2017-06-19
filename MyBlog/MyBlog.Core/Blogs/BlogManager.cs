@@ -21,13 +21,14 @@ namespace MyBlog.Core.Blogs
             _db.SaveChanges();
         }
 
-        public void Update(int id, string content, string title,int classifiId)
+        public void Update(int id, string content, string title,int classifiId,string subcontent)
         {
             var blog = _db.Blog.AsParallel().FirstOrDefault(m => m.Id == id);
             blog.Title = title;
             blog.Content = content;
             blog.ModificationTime = DateTime.Now;
             blog.ClassifyId = classifiId;
+            blog.SubContent = subcontent;
             _db.SaveChanges();
         }
         public IQueryable<Blog> Get()

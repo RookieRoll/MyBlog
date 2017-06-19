@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace MyBlog.Application.BlogsApplicationService
 {
@@ -31,14 +32,18 @@ namespace MyBlog.Application.BlogsApplicationService
         {
             return _blogManager.Get().Where(func).AsParallel().AsQueryable();
         }
-        public void Create(int classifyId,string title,string content,int authorId,string authorName)
+        public void Create(int classifyId,string title,string content,int authorId,string authorName,string subcontent)
         {
-            _blogManager.Create(Blog.Convert(classifyId,content,title,authorId,authorName,(int)BlogStates.Unpublish));
+            var newcontent = content.Replace("/upload", "http://localhost:63321/upload");
+            _blogManager.Create(Blog.Convert(classifyId, newcontent, title,authorId,authorName,(int)BlogStates.Unpublish,subcontent));
         }
-        public void Update(int id,string title,string content,int classifyId)
+        public void Update(int id,string title,string content,int classifyId,string subcontent)
         {
-            _blogManager.Update(id,content,title,classifyId);
+            var newcontent = content.Replace("/upload", "http://localhost:63321/upload");
+            _blogManager.Update(id, newcontent, title,classifyId,subcontent);
         }
+
+
         public Blog Get(int id)
         {
             var blog = Get().AsParallel().FirstOrDefault(m => m.Id == id);

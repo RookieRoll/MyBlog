@@ -109,7 +109,7 @@ function SubmitData(id) {
     var content = ue.getContent();
     var classify = $("#classify").val();
     var title = $("#title").val();
-
+    var subcontent = ue.getContentTxt();
     $.ajax({
         url: "/Blog/UpdateConfirm",
         method: 'post',
@@ -117,7 +117,8 @@ function SubmitData(id) {
             ClassifyId: classify,
             content: content,
             Title: title,
-            Id: id
+            Id: id,
+            SubContent: subcontent
         },
         success: function () {
             location.href = "/Blog/UnPublish"
