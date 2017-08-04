@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.EntityFrameWorkCore", "MyBlog.EntityFrameWorkCore\MyBlog.EntityFrameWorkCore.csproj", "{82FD007F-A6D2-4EB4-8D95-3BA2EB493F28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlog.EntityFrameWorkCore", "MyBlog.EntityFrameWorkCore\MyBlog.EntityFrameWorkCore.csproj", "{82FD007F-A6D2-4EB4-8D95-3BA2EB493F28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.Core", "MyBlog.Core\MyBlog.Core.csproj", "{ED277181-A1B3-4084-80C7-D50BAA92E6F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlog.Core", "MyBlog.Core\MyBlog.Core.csproj", "{ED277181-A1B3-4084-80C7-D50BAA92E6F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.Application", "MyBlog.Application\MyBlog.Application.csproj", "{F8E98A74-8AC3-40A8-8353-7C0469BABB9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlog.Application", "MyBlog.Application\MyBlog.Application.csproj", "{F8E98A74-8AC3-40A8-8353-7C0469BABB9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.AdminBlog", "MyBlog.AdminBlog\MyBlog.AdminBlog.csproj", "{AFB69FD5-EDD0-4118-B8ED-D03BFF3502D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlog.AdminBlog", "MyBlog.AdminBlog\MyBlog.AdminBlog.csproj", "{AFB69FD5-EDD0-4118-B8ED-D03BFF3502D2}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{42699C09-F5AE-4AF4-9954-BC3906617DE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{AFB69FD5-EDD0-4118-B8ED-D03BFF3502D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFB69FD5-EDD0-4118-B8ED-D03BFF3502D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFB69FD5-EDD0-4118-B8ED-D03BFF3502D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42699C09-F5AE-4AF4-9954-BC3906617DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42699C09-F5AE-4AF4-9954-BC3906617DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42699C09-F5AE-4AF4-9954-BC3906617DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42699C09-F5AE-4AF4-9954-BC3906617DE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

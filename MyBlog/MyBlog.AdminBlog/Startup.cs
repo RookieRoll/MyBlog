@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MyBlog.AdminBlog.Filter;
 using MyBlog.AdminBlog.MiddleWare;
 using UEditorNetCore;
 
@@ -26,10 +27,15 @@ namespace MyBlog.AdminBlog
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            
             services.AddCors();
             services.AddUEditorService();
             services.AddDi();
-            services.AddMvc();
+            services.AddMvc(filter =>
+            {
+                filter.Filters.Add(new UserFriendlyWebExceptionFilterAttribute());
+                filter.Filters.Add(new UserFriendlyWebapiExceptionFilterAttribute());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +44,7 @@ namespace MyBlog.AdminBlog
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-
+            
             app.UseCors(build => build
             .AllowAnyHeader()
             .AllowAnyMethod()

@@ -15,8 +15,12 @@ namespace MyBlog.EntityFrameWorkCore.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            var mysql=Environment.GetEnvironmentVariable("MYSQL");
+            var username = Environment.GetEnvironmentVariable("MYUSERNSME");
+            var password = Environment.GetEnvironmentVariable("PASSWORD");
             //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-            optionsBuilder.UseSqlServer(@"Data Source =.\sqlexpress; Initial Catalog = MyBlog; User ID = sa; Password = qh18723361304;MultipleActiveResultSets=true;");
+            //  optionsBuilder.UseSqlServer(@"Data Source =.\sqlexpress; Initial Catalog = MyBlog; User ID = sa; Password = qh18723361304;MultipleActiveResultSets=true;");
+            optionsBuilder.UseMySql(@"server=127.0.0.1;uid=root;pwd=123456;database=myblog;charset=utf8;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  myblog.adminblog:
+    image: myblog.adminblog
+    environment:
+      -MYSQL 139.199.165.121
+      -MYUSERNSME root
+      -PASSWORD 123456
+    build:
+      context: ./MyBlog.AdminBlog
+      dockerfile: Dockerfile
